@@ -21,6 +21,6 @@ a.nav-link {
 }
 
 #add-new-place {
-    background-color: green;
-    border: darkred;
+    background-color: darkred;
+    border: black;
 }
