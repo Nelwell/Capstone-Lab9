@@ -15,8 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('travel_wishlist.urls'))  # make sure matches name of app name
 ]
+
+""" If we are running this locally in development mode on our local machine, then add on these roots
+ to static files, which will be based on the MEDIA_URL and the MEDIA_ROOT. >> So those things are 
+ based on where in your file system your current code is.
+"""
+if settings.DEBUG:  # checks if is running locally using the development server
+    # points to path on local comp defined in settings.py
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
